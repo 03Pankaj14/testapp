@@ -1,23 +1,25 @@
 import React from 'react';
 import Header from '../header/header';
 import SideNav from '../sidenav/sidenav';
+import UserInputs from '../user-inputs';
 
 import { connect } from "react-redux";
 import { addInput } from "../../redux/actions";
-import addons from '../../redux/reducers/addons';
 
 import './details-page.css';
 
 class DetailsPage extends React.Component {
     state = { 
         title : "DETAILS PAGE",
+        subtitle : "My Details",
         tabval: '#tab1',
         inpval: ''
      }
 
     handleTab = data => {
         this.setState({ 
-            tabval: data
+            tabval: data,
+            inpval: ''
         });
     }
 
@@ -29,6 +31,11 @@ class DetailsPage extends React.Component {
         //     inpval: this.state.inpval,
         //     tabval: '#tab2'
         // });
+        // this.setState({
+        //     inpval: '',
+        //     tabval: '#tab2'
+        // });
+        
     }
 
     handleChange = e => {
@@ -70,22 +77,7 @@ class DetailsPage extends React.Component {
          );
     }
 }
-
-const mapStateToProps = state => {
-    console.log(state);
-    return { addons : state };
-}
  
-export default connect(mapStateToProps, {addInput})(DetailsPage);
+export default connect(null, {addInput})(DetailsPage);
 
 
-
-
-// const mapStateToProps = state => {
-//     const { byIds, allIds } = state.addons || {};
-//     const addons = 
-//         allIds && allIds.length
-//         ? allIds.map(id => (byIds ? {...byIds[id], id} : null))
-//         : null;
-//     return { addons };
-// }

@@ -28,7 +28,7 @@ class Home extends React.Component {
     
     return ( 
       <React.Fragment>
-        <Header className='bg-primary' title={title}/>
+        <Header title={title}/>
         <CardList users={users} />
       </React.Fragment>
     )

@@ -1,6 +1,5 @@
 .card-container {
   display: flex;
-  height:10rem;
   flex-direction: column;
   border: 1px solid grey;
   border-radius: 5px;
