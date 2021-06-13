@@ -1,10 +1,10 @@
 import React from 'react';
 import Header from '../header/header';
 import SideNav from '../sidenav/sidenav';
+import UserInputs from '../user-inputs';
 
 import { connect } from "react-redux";
 import { addInput } from "../../redux/actions";
-import addons from '../../redux/reducers/addons';
 
 import './details-page.css';
 
@@ -18,18 +18,19 @@ class DetailsPage extends React.Component {
 
     handleTab = data => {
         this.setState({ 
-            tabval: data
+            tabval: data,
+            inpval: ''
         });
     }
 
     handleSubmit = e => {
         this.props.addInput(this.state.inpval);
 
-        this.setState({inpval: ''});
-        // this.setState({ 
-        //     inpval: this.state.inpval,
+        // this.setState({
+        //     inpval: '',
         //     tabval: '#tab2'
         // });
+        
     }
 
     handleChange = e => {
@@ -56,38 +57,16 @@ class DetailsPage extends React.Component {
                     <button className="add-todo" onClick={this.handleSubmit}>
                         Add Todo
                     </button>
+                    <span></span>
                 </div>
-                : <div>
-                    <ul>
-                    {addons && addons.length
-                    ? addons.map((addon, index) => {
-                        return <li key={index}>{addon.content}</li>;
-                        })
-                    : "No User Input!"}
-                    </ul>
-                </div>
+                : <UserInputs/>
             }
             
             </React.Fragment>
          );
     }
 }
-
-const mapStateToProps = state => {
-    console.log(state);
-    return { addons : state };
-}
  
-export default connect(mapStateToProps, {addInput})(DetailsPage);
+export default connect(null, {addInput})(DetailsPage);
 
 
-
-
-// const mapStateToProps = state => {
-//     const { byIds, allIds } = state.addons || {};
-//     const addons = 
-//         allIds && allIds.length
-//         ? allIds.map(id => (byIds ? {...byIds[id], id} : null))
-//         : null;
-//     return { addons };
-// }

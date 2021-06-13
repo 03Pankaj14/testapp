@@ -3,6 +3,10 @@
   font-family: cursive;
 }
 
+#user-inputs {
+  float: none;
+}
+
 /* .App-logo {
   height: 40vmin;
   pointer-events: none;
