@@ -61,16 +61,9 @@ class DetailsPage extends React.Component {
                     <button className="add-todo" onClick={this.handleSubmit}>
                         Add Todo
                     </button>
+                    <span></span>
                 </div>
-                : <div>
-                    <ul>
-                    {addons && addons.length
-                    ? addons.map((addon, index) => {
-                        return <li key={index}>{addon.content}</li>;
-                        })
-                    : "No User Input!"}
-                    </ul>
-                </div>
+                : <UserInputs/>
             }
             
             </React.Fragment>
